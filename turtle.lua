@@ -1,51 +1,79 @@
--- Load JSON library
-local json = require("json")
+os.loadAPI("json")
 
--- Function to read the local package.json
-local function readLocalPackage()
-    local localFilePath = "package.json"
-    local localFile = fs.open(localFilePath, "r")
 
-    if not localFile then
-        return nil
+-- Replace these with your GitHub repo information
+local githubUsername = "your_github_username"
+local githubRepo = "your_github_repo"
+local githubBranch = "main" -- or the branch you want to check
+
+-- Function to read the local package.json file
+local function readLocalPackageJson()
+    local file = fs.open("package.json", "r")
+    if file then
+        local content = file.readAll()
+        file.close()
+        return content
     end
-
-    local localContent = localFile.readAll()
-    localFile.close()
-
-    return localContent
+    return nil
 end
 
--- Read local package.json content or set to nil if not found
-local localContent = readLocalPackage()
-
--- Parse local JSON content if the file was found
-local localVersion
-if localContent then
-    local localPackageData = json.decode(localContent)
-    localVersion = localPackageData.version
-else
-    print("Local package.json not found. Treating as outdated.")
-    localVersion = "0.0.0"
+-- Function to fetch the remote JSON file from GitHub
+local function fetchRemoteJson()
+    local url = string.format("https://raw.githubusercontent.com/%s/%s/%s/package.json",
+                               githubUsername, githubRepo, githubBranch)
+    local response = http.get(url)
+    if response then
+        local content = response.readAll()
+        response.close()
+        return content
+    end
+    return nil
 end
 
--- Fetch and compare GitHub version
-local githubUrl = "https://raw.githubusercontent.com/happyhourxd/minecraftTurtles/main/package.json"
-http.get(githubUrl, nil, function(response)
-    if not response then
-        error("Error: Unable to fetch GitHub package.json")
+-- Function to compare the local and remote JSON files
+local function compareJsonFiles(localJson, remoteJson)
+    -- Convert both JSON strings to Lua tables
+    local localData = json.decode(localJson)
+    local remoteData = json.decode(remoteJson)
+
+    -- Compare the two tables (you may need to customize this based on your requirements)
+    if localData and remoteData then
+        if localData.version == remoteData.version then
+            return true
+        else
+            return false
+        end
     end
 
-    local githubContent = response.readAll()
-    response.close()
+    return nil
+end
 
-    local githubPackageData = json.decode(githubContent)
-    local githubVersion = githubPackageData.version
+-- Main function to check the JSON files
+local function checkJsonFiles()
+    local localJson = readLocalPackageJson()
+    if not localJson then
+        print("Error: Unable to read local package.json")
+        return
+    end
 
-    if githubVersion > localVersion then
-        print("A new version is available! Please update.")
-        -- Perform update actions, notify the user, or any other action you want.
+    local remoteJson = fetchRemoteJson()
+    if not remoteJson then
+        print("Error: Unable to fetch remote package.json from GitHub")
+        return
+    end
+
+    local filesMatch = compareJsonFiles(localJson, remoteJson)
+
+    if filesMatch == true then
+        print("Local and remote JSON files match.")
+        -- Perform actions if the files match
+    elseif filesMatch == false then
+        print("Local and remote JSON files do not match.")
+        -- Perform actions if the files do not match
     else
-        print("Your version is up to date.")
+        print("Error: Unable to compare JSON files.")
     end
-end)
+end
+
+-- Call the main function to check JSON files
+checkJsonFiles()
