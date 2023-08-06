@@ -1,3 +1,8 @@
+if not fs.exists("json")
+    shell.run("pastebin get 4nRg9CHU json")
+
+
+
 os.loadAPI("json")
 
 local githubUsername = "happyhourxd"
