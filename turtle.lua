@@ -13,6 +13,7 @@ local remoteDecodedData = json.decode(file.readAll())
 file.close()
 
 if (remoteDecodedData.version > localDecodedData.version) then
+    shell.run("rm updater.lua")
     shell.run("wget https://raw.githubusercontent.com/happyhourxd/MinecraftTurtles/main/updater.lua")
     dofile(updater)
 else
