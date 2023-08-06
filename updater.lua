@@ -21,21 +21,7 @@ for _, entry in ipairs(treeData.tree) do
         end
 
         -- Download the new file content directly from the GitHub Raw URL
-        local fileUrl = string.format("https://raw.githubusercontent.com/%s/%s/%s/%s", githubUsername, githubRepo, githubBranch, entry.path)
-        local fileResponse = http.get(fileUrl)
-
-        if fileResponse then
-            local fileContent = fileResponse.readAll()
-            fileResponse.close()
-
-            -- Write the downloaded content to the file
-            local file = fs.open(filePath, "w")
-            file.write(fileContent)
-            file.close()
-
-            print("Downloaded:", filePath)
-        else
-            print("Error: Unable to download file:", entry.path)
-        end
+        _G.arg = {filePath}
+        dofile("downloadFile.lua")
     end
 end
