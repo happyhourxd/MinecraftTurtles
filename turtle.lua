@@ -14,6 +14,7 @@ file.close()
 
 if (remoteDecodedData.version > localDecodedData.version) then
     shell.run("wget https://raw.githubusercontent.com/happyhourxd/MinecraftTurtles/main/updater.lua")
+    dofile(updater)
 else
     print("your files are up to date!")
 end
