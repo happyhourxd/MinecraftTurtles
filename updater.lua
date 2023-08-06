@@ -1,6 +1,6 @@
-if not fs.exists("json")
+if not fs.exists("json") then
     shell.run("pastebin get 4nRg9CHU json")
-
+end
 
 
 os.loadAPI("json")
