@@ -2,8 +2,8 @@ os.loadAPI("json")
 
 
 -- Replace these with your GitHub repo information
-local githubUsername = "your_github_username"
-local githubRepo = "your_github_repo"
+local githubUsername = "happyhourxd"
+local githubRepo = "minecraftTurtles"
 local githubBranch = "main" -- or the branch you want to check
 
 -- Function to read the local package.json file
