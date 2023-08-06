@@ -12,7 +12,7 @@ local file = fs.open("package.json", "r")
 local remoteDecodedData = json.decode(file.readAll())
 file.close()
 
-if (remoteDecodedData > localDecodedData) then
+if (remoteDecodedData.version > localDecodedData.version) then
     shell.run("wget https://raw.githubusercontent.com/happyhourxd/MinecraftTurtles/main/updater.lua")
 else
     print("your files are up to date!")
