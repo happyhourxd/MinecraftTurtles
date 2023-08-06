@@ -29,6 +29,7 @@ if (remoteDecodedData.version > localDecodedData.version) then
         file.close()
 
         dofile(updaterPath)
-    else
+    end
+else
     print("your files are up to date!")
 end
