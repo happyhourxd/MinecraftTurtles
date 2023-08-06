@@ -25,7 +25,6 @@ for _, entry in ipairs(treeData.tree) do
             file.write(fileResponse.readAll())
             file.close()
             fileResponse.close()
-            print("Downloaded:", filePath)
         else
             print("Error: Unable to download file:", entry.path)
         end
