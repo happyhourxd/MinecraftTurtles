@@ -15,6 +15,7 @@ if (remoteDecodedData.version > localDecodedData.version) then
     print('updating...')
     _G.arg = {"updater.lua"}
     dofile("download.lua")
+    dofile("updater.lua")
 else
     print("your files are up to date!")
 end
