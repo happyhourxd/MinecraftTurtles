@@ -1,20 +1,43 @@
 -- Load JSON library
 local json = require("json")
 
--- Read local package.json
-local localFile = io.open("package.json", "r")
-local localContent = localFile:read("*a")
-localFile:close()
+-- Function to read the local package.json
+local function readLocalPackage()
+    local localFilePath = "path/to/local/package.json"
+    local localFile = io.open(localFilePath, "r")
 
--- Parse local JSON content
-local localPackageData = json.decode(localContent)
-local localVersion = localPackageData.version
+    if not localFile then
+        return nil
+    end
+
+    local localContent = localFile:read("*a")
+    localFile:close()
+
+    return localContent
+end
+
+-- Read local package.json content or set to nil if not found
+local localContent = readLocalPackage()
+
+-- Parse local JSON content if the file was found
+local localVersion
+if localContent then
+    local localPackageData = json.decode(localContent)
+    localVersion = localPackageData.version
+else
+    print("Local package.json not found. Treating as outdated.")
+    localVersion = "0.0.0"
+end
 
 -- Fetch and compare GitHub version
 local http = require("http")
 
-local githubUrl = "https://raw.githubusercontent.com/happyhourxd/minecraftTurtles/main/package.json"
+local githubUrl = "https://raw.githubusercontent.com/username/repo/main/package.json"
 local githubResponse = http.get(githubUrl)
+if not githubResponse then
+    error("Error: Unable to fetch GitHub package.json")
+end
+
 local githubContent = githubResponse.readAll()
 githubResponse.close()
 
