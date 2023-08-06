@@ -16,7 +16,7 @@ file.close()
 local packageJsonData = json.decode(packageJsonContent)
 
 -- Modify the version number in the Lua table
-packageJsonData.version = "1.2.3"  -- Replace "1.2.3" with the desired version number
+packageJsonData.version = "0.0.1"  -- Replace "1.2.3" with the desired version number
 
 -- Encode the modified Lua table back to JSON string
 local updatedJsonContent = json.encode(packageJsonData)
