@@ -1,11 +1,14 @@
 os.loadAPI("json")
 
-local apiUrl = string.format("https://api.github.com/repos/happyhourxd/MinecraftTurtles/git/trees/main?recursive=1")
+local githubUsername = "happyhourxd"
+local githubRepo = "MinecraftTurtles"
+local githubBranch = "main"
+local apiUrl = string.format("https://api.github.com/repos/%s/%s/git/trees/%s?recursive=1", githubUsername, githubRepo, githubBranch)
+
 local response = http.get(apiUrl)
 local jsonResponse = response.readAll()
 response.close()
 local treeData = json.decode(jsonResponse)
-
 
 for _, entry in ipairs(treeData.tree) do
     if entry.type == "blob" then
@@ -17,14 +20,20 @@ for _, entry in ipairs(treeData.tree) do
             fs.delete(filePath)
         end
 
-        -- Download and write the new file content
-        local fileUrl = entry.url
+        -- Download the new file content directly from the GitHub Raw URL
+        local fileUrl = string.format("https://raw.githubusercontent.com/%s/%s/%s/%s", githubUsername, githubRepo, githubBranch, entry.path)
         local fileResponse = http.get(fileUrl)
+
         if fileResponse then
-            local file = fs.open(filePath, "w")
-            file.write(fileResponse.readAll())
-            file.close()
+            local fileContent = fileResponse.readAll()
             fileResponse.close()
+
+            -- Write the downloaded content to the file
+            local file = fs.open(filePath, "w")
+            file.write(fileContent)
+            file.close()
+
+            print("Downloaded:", filePath)
         else
             print("Error: Unable to download file:", entry.path)
         end

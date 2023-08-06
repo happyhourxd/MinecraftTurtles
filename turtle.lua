@@ -12,9 +12,23 @@ file.close()
 
 if (remoteDecodedData.version > localDecodedData.version) then
     print('updating...')
-    delete("updater.lua")
-    http.get("https://raw.githubusercontent.com/happyhourxd/MinecraftTurtles/main/updater.lua")
-    dofile("updater.lua")
-else
+    local updaterPath = "updater.lua"
+
+    if fs.exists(updaterPath) then
+        fs.delete(updaterPath)
+    end
+
+    local response = http.get("https://raw.githubusercontent.com/happyhourxd/MinecraftTurtles/main/updater.lua")
+    if response then
+        local fileContent = response.readAll()
+        response.close()
+
+
+        local file = fs.open(updaterPath, "w")
+        file.write(fileContent)
+        file.close()
+
+        dofile(updaterPath)
+    else
     print("your files are up to date!")
 end
