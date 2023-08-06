@@ -3,7 +3,7 @@ os.loadAPI("json")
 local file = fs.open("package.json", "r")
 local localDecodedData = json.decode(file.readAll())
 file.close()
-fs.delete(package.json)
+fs.delete("package.json")
 _G.arg = {"package.json"}
 dofile("download.lua")
 
