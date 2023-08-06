@@ -32,7 +32,7 @@ end
 -- Fetch and compare GitHub version
 local http = require("http")
 
-local githubUrl = "https://raw.githubusercontent.com/username/repo/main/package.json"
+local githubUrl = "https://raw.githubusercontent.com/happyhourxd/minecraftTurtles/main/package.json"
 local githubResponse = http.get(githubUrl)
 if not githubResponse then
     error("Error: Unable to fetch GitHub package.json")
