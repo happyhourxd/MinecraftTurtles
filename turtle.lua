@@ -3,15 +3,15 @@ local json = require("json")
 
 -- Function to read the local package.json
 local function readLocalPackage()
-    local localFilePath = "path/to/local/package.json"
-    local localFile = io.open(localFilePath, "r")
+    local localFilePath = "package.json"
+    local localFile = fs.open(localFilePath, "r")
 
     if not localFile then
         return nil
     end
 
-    local localContent = localFile:read("*a")
-    localFile:close()
+    local localContent = localFile.readAll()
+    localFile.close()
 
     return localContent
 end
@@ -30,23 +30,22 @@ else
 end
 
 -- Fetch and compare GitHub version
-local http = require("http")
-
 local githubUrl = "https://raw.githubusercontent.com/happyhourxd/minecraftTurtles/main/package.json"
-local githubResponse = http.get(githubUrl)
-if not githubResponse then
-    error("Error: Unable to fetch GitHub package.json")
-end
+http.get(githubUrl, nil, function(response)
+    if not response then
+        error("Error: Unable to fetch GitHub package.json")
+    end
 
-local githubContent = githubResponse.readAll()
-githubResponse.close()
+    local githubContent = response.readAll()
+    response.close()
 
-local githubPackageData = json.decode(githubContent)
-local githubVersion = githubPackageData.version
+    local githubPackageData = json.decode(githubContent)
+    local githubVersion = githubPackageData.version
 
-if githubVersion > localVersion then
-    print("A new version is available! Please update.")
-    -- Perform update actions, notify the user, or any other action you want.
-else
-    print("Your version is up to date.")
-end
+    if githubVersion > localVersion then
+        print("A new version is available! Please update.")
+        -- Perform update actions, notify the user, or any other action you want.
+    else
+        print("Your version is up to date.")
+    end
+end)
