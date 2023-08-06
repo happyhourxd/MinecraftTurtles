@@ -1,6 +1,6 @@
 os.loadAPI("json")
 
-local packageJsonPath = "package.json"  -- Replace with the actual path to your package.json
+local packageJsonPath = "package.json" 
 
 -- Read the content of the package.json file into a Lua string
 local file = fs.open(packageJsonPath, "r")
@@ -15,8 +15,7 @@ file.close()
 -- Parse the JSON data into a Lua table
 local packageJsonData = json.decode(packageJsonContent)
 
--- Modify the version number in the Lua table
-packageJsonData.version = "0.0.1"  -- Replace "1.2.3" with the desired version number
+packageJsonData.version = "0.0.1"  -- the version number to downgrade to
 
 -- Encode the modified Lua table back to JSON string
 local updatedJsonContent = json.encode(packageJsonData)
