@@ -1,5 +1,5 @@
 os.loadAPI("json")
-local treeData = json.decode(http.get(string.format("https://api.github.com/repos/happyhourxd/MinecraftTurtles/get/trees/main?recursive=1")).readAll())
+local treeData = json.decode((http.get(string.format("https://api.github.com/repos/happyhourxd/MinecraftTurtles/get/trees/main?recursive=1"))).readAll())
 
 for _, entry in ipairs(treeData.tree) do
     if entry.type == "blob" then
