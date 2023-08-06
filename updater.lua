@@ -22,6 +22,23 @@ for _, entry in ipairs(treeData.tree) do
 
         -- Download the new file content directly from the GitHub Raw URL
         _G.arg = {filePath}
-        dofile("download.lua")
+        downloadFile(filePath)
+    end
+end
+
+
+function downloadFile(filePath)
+    local response = http.get(string.format("https://raw.githubusercontent.com/happyhourxd/MinecraftTurtles/main/%s", filePath))
+    if response then
+        local fileContent = response.readAll()
+        response.close()
+
+        local file = fs.open(filePath, "w")
+        file.write(fileContent)
+        file.close()
+
+        print("Downloaded:", filePath)
+    else
+        print("Error: Unable to download file:", filePath)
     end
 end
