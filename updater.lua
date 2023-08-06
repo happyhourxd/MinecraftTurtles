@@ -22,6 +22,6 @@ for _, entry in ipairs(treeData.tree) do
 
         -- Download the new file content directly from the GitHub Raw URL
         _G.arg = {filePath}
-        dofile("downloadFile.lua")
+        dofile("download.lua")
     end
 end
