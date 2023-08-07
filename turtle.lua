@@ -28,6 +28,7 @@ do
         for k = 0,H,1
         do
             turtle.forward()
+            print(i, " is i ", j, " is j ",k, " is k ")
         end
         if not (j == W) then
             if (RightOrLeft == 0) then
@@ -49,7 +50,7 @@ do
             turtle.turnLeft()
             turtle.turnLeft()
         else
-            print(direction, "this shouldn't be .5 i think?")
+            print(direction, "this shouldn't be 0 i think?")
             turtle.turnRight()
             turtle.turnRight()
         end
