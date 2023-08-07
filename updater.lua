@@ -1,4 +1,7 @@
+print(fs.exists("json"))
+
 if not fs.exists("json") then
+    print("aquiring json formater...")
     shell.run("pastebin get 4nRg9CHU json")
 end
 
