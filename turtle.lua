@@ -35,13 +35,13 @@ do
                 turtle.turnRight()
                 turtle.forward()
                 turtle.turnRight()
-                direction - .5
+                direction =- .5
             else
                 RightOrLeft = 0
                 turtle.turnLeft()
                 turtle.forward()
                 turtle.turnLeft()
-                direction + .5
+                direction =+ .5
             end
         end
         if not ((W % 2) && (j == W)) then
