@@ -35,16 +35,16 @@ do
                 turtle.turnRight()
                 turtle.forward()
                 turtle.turnRight()
-                direction =- .5
+                direction = direction - .5
             else
                 RightOrLeft = 0
                 turtle.turnLeft()
                 turtle.forward()
                 turtle.turnLeft()
-                direction =+ .5
+                direction = direction + .5
             end
         end
-        if not ((W % 2) && (j == W)) then
+        if not ((W % 2) and (j == W)) then
             print(direction, "this should be .5")
             turtle.turnLeft()
             turtle.turnLeft()
@@ -52,6 +52,7 @@ do
             print(direction, "this shouldn't be .5 i think?")
             turtle.turnRight()
             turtle.turnRight()
+        end
     end
     if not (i == H) then
         turtle.up()
