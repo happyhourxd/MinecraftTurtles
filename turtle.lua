@@ -30,6 +30,10 @@ do
         turtle.forward()
     end
     L= L - 1
+    tonumber(L)
+    tonumber(W)
+    tonumber(H)
+    print(type(j), " ", type(W))
     if (j < W) then
         if (RightOrLeft == 0) then
             RightOrLeft = 1
