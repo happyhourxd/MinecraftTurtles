@@ -9,13 +9,14 @@ end
 LOWESTY = -60
 
 print("what size should i mine?")
+print("only do the first two for now")
 L = read()
 W = read()
-H = read()
+H = read() --disabled for testing
 
 NeededFuel = (L * W * H) + L + W + H
 
-RightOrLeft = 0
+RightOrLeft = 1
 direction = .5 -- in pi radians
 
 
@@ -48,14 +49,9 @@ do
         if not ((W % 2) and (j == W)) then
             print(direction, "this should be .5")
             turtle.turnLeft()
-            turtle.turnLeft()
         else
             print(direction, "this shouldn't be 0 i think?")
             turtle.turnRight()
-            turtle.turnRight()
         end
-    end
-    if not (i == H) then
-        turtle.up()
     end
 end
