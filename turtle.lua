@@ -23,9 +23,9 @@ direction = .5 -- in pi radians
 print(L, " ", W, " ", H)
 
  
-for (j = 1,W,1)
+for j = 1,W,1
 do
-    for(k = 1,L,1)
+    for k = 1,L,1
     do
         turtle.forward()
     end
