@@ -22,12 +22,12 @@ NeededFuel = (L * W * H) + L + W + H
 
 RightOrLeft = 1
 direciton = .5 -- in pi radians
-
+height = 0
 
 L = tonumber(L)
 W = tonumber(W)
 H = tonumber(H)
-for i = 1 H,1
+for i = 1, H,1
 do
     for j = 1,W,1
     do
@@ -56,14 +56,16 @@ do
     end
     if(i < H) then
         turtle.up()
+        height = height + 1
+    end
 end
 
-for i = 1,H,1
+for i = 1,height,1
 do
     turtle.down()
 end
 
-if not (direciton == 1.5 or direciton == -.5)
+if not (direciton == 1.5 or direciton == -.5) then
     for i = 1,(abs(direction% .5)),1
     do
         turtle.turnRight()
