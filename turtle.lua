@@ -1,3 +1,7 @@
+function wait ( seconds )
+end
+
+
 hasGps = false
 
 X, Y, Z = gps.locate()
@@ -31,19 +35,25 @@ do
         turtle.forward()
     end
     L= L - 1
-    
+
     print(type(j), " ", type(W))
     if (j < W) then
         if (RightOrLeft == 0) then
             RightOrLeft = 1
             turtle.turnRight()
+            wait(2)
             turtle.forward()
+            wait(2)
             turtle.turnRight()
+            wait(2)
         else
             RightOrLeft = 0
             turtle.turnLeft()
+            wait(2)
             turtle.forward()
+            wait(2)
             turtle.turnLeft() 
+            wait(2)
         end
     end
 end
