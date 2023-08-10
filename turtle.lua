@@ -20,9 +20,10 @@ RightOrLeft = 1
 direction = .5 -- in pi radians
 
 
-print(L, " ", W, " ", H)
+L = tonumber(L)
+W = tonumber(W)
+H = tonumber(H)
 
- 
 for j = 1,W,1
 do
     for k = 1,L,1
@@ -30,9 +31,7 @@ do
         turtle.forward()
     end
     L= L - 1
-    tonumber(L)
-    tonumber(W)
-    tonumber(H)
+    
     print(type(j), " ", type(W))
     if (j < W) then
         if (RightOrLeft == 0) then
