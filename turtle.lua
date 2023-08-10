@@ -27,33 +27,55 @@ direction = .5 -- in pi radians
 L = tonumber(L)
 W = tonumber(W)
 H = tonumber(H)
-
-for j = 1,W,1
+for i = 1 H,1
 do
-    for k = 1,L,1
+    for j = 1,W,1
+    do
+        for k = 2,L,1
+        do
+            turtle.forward()
+        end
+
+        print(type(j), " ", type(W))
+        if (j < W) then
+            if (RightOrLeft == 0) then
+                RightOrLeft = 1
+                turtle.turnRight()
+                turtle.forward()
+                turtle.turnRight()
+                direciton = direciton - 1
+
+            else
+                RightOrLeft = 0
+                turtle.turnLeft()
+                turtle.forward()
+                turtle.turnLeft()
+                direciton = direciton + 1
+            end
+        end
+    end
+    if(i < H) then
+        turtle.up()
+end
+
+for i = 1,H,1
+do
+    turtle.down()
+end
+
+if not (direciton == 1.5 or direciton == -.5)
+    for i = 1,(abs(direction% .5)),1
+    do
+        turtle.turnRight()
+    end
+end
+if not ((W % 2) == 0) then
+    for j = 1, W, 1
     do
         turtle.forward()
     end
-    L= L - 1
-
-    print(type(j), " ", type(W))
-    if (j < W) then
-        if (RightOrLeft == 0) then
-            RightOrLeft = 1
-            turtle.turnRight()
-            wait(2)
-            turtle.forward()
-            wait(2)
-            turtle.turnRight()
-            wait(2)
-        else
-            RightOrLeft = 0
-            turtle.turnLeft()
-            wait(2)
-            turtle.forward()
-            wait(2)
-            turtle.turnLeft() 
-            wait(2)
-        end
-    end
+end
+for k = i, L, 1
+do
+    turtle.forward()
 end
