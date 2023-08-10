@@ -21,7 +21,7 @@ H = read() --disabled for testing
 NeededFuel = (L * W * H) + L + W + H
 
 RightOrLeft = 1
-direction = .5 -- in pi radians
+direciton = .5 -- in pi radians
 
 
 L = tonumber(L)
