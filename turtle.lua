@@ -60,13 +60,15 @@ do
     end
 end
 
-for i = 1,height,1
+print(direciton)
+
+for i = 1,height - 1,1
 do
     turtle.down()
 end
 
 if not (direciton == 1.5 or direciton == -.5) then
-    for i = 1,(abs(direction% .5)),1
+    for i = 1,(abs(direction % .5)),1
     do
         turtle.turnRight()
     end
