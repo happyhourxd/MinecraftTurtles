@@ -140,34 +140,32 @@ if hasGps then
         end
     end
 else
--- Move back to the initial level
-for i = 1, height do
-    turtle.down()
-end
-
--- Turn around 180 degrees
-turtle.turnRight()
-turtle.turnRight()
-
--- If the initial width is odd and the turtle is not at the width of the length
-if not ((W % 2) == 0) and not (j == W) then
-    for j = 1, W - 1 do
-        turtle.forward()
+    -- Move back to the initial level
+    for i = 1, height do
+        turtle.down()
     end
+
+    -- Turn around 180 degrees
     turtle.turnRight()
-end
+    turtle.turnRight()
 
--- Move back along the mine's length
-for k = 1, L - 1 do
-    turtle.forward()
-end
-
--- If the direction is 0.5 or -1.5, turn right
-if direction == 0.5 or direction == -1.5 then
-    for i = 1, math.abs(direction % 0.5) do
+    -- If the initial width is odd and the turtle is not at the width of the length
+    if not ((W % 2) == 0) and not (j == W) then
+        for j = 1, W - 1 do
+            turtle.forward()
+        end
         turtle.turnRight()
     end
-end
 
+    -- Move back along the mine's length
+    for k = 1, L - 1 do
+        turtle.forward()
+    end
 
+    -- If the direction is 0.5 or -1.5, turn right
+    if direction == 0.5 or direction == -1.5 then
+        for i = 1, math.abs(direction % 0.5) do
+            turtle.turnRight()
+        end
+    end
 end
