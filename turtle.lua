@@ -1,8 +1,3 @@
--- Function to wait for a specified number of seconds
-function wait(seconds)
-    -- You can add implementation here if needed
-end
-
 -- Check if GPS is available
 hasGps = false
 X, Y, Z = gps.locate()
@@ -76,25 +71,25 @@ for i = 1, H do
 end
 
 -- Move back to the initial level
-for i = 1, height - 1 do
+for i = 1, height do
     turtle.down()
 end
 
---[[
-if not (direciton == 1.5 or direciton == -.5) then
-    for i = 1,(abs(direction % .5)),1
-    do
-        turtle.turnRight()
-    end
-end
 if not ((W % 2) == 0) then
-    for j = 1, W, 1
-    do
+    for j = 1, W - 1 do
         turtle.forward()
     end
+    turtle.turnRight()
 end
-for k = i, L, 1
-do
+
+for k = 1, L - 1 do
     turtle.forward()
 end
-]]--
+
+-- Here you need to complete your logic based on 'direction'
+if direction == 1.5 or direction == -0.5 then
+    for i = 1,(direction % .5),1
+    do
+        turtle.turnLeft()
+    end
+end
