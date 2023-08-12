@@ -1,71 +1,85 @@
-function wait ( seconds )
+-- Function to wait for a specified number of seconds
+function wait(seconds)
+    -- You can add implementation here if needed
 end
 
-
+-- Check if GPS is available
 hasGps = false
-
 X, Y, Z = gps.locate()
-
-if not (X == nil) then
+if X ~= nil then
     hasGps = true
 end
 
+-- Set initial values
 LOWESTY = -60
-
-print("what size should i mine?")
-print("only do the first two for now")
-L = read()
-W = read()
-H = read() --disabled for testing
-
-NeededFuel = (L * W * H) + L + W + H
-
-RightOrLeft = 1
-direciton = .5 -- in pi radians
 height = 0
 
+-- User input for mine size
+print("What size should I mine?")
+print("Enter length:")
+L = tonumber(read())
+print("Enter width:")
+W = tonumber(read())
+print("Enter height:") -- This is disabled for testing
+H = tonumber(read())
+
+-- Calculate needed fuel
+NeededFuel = (L * W * H) + L + W + H
+
+-- Initialize direction variables
+RightOrLeft = 1
+direction = 0.5 -- in pi radians
+
+-- Convert dimensions to numbers
 L = tonumber(L)
 W = tonumber(W)
 H = tonumber(H)
-for i = 1, H,1
-do
-    for j = 1,W,1
-    do
-        for k = 2,L,1
-        do
+
+-- Loop through each layer of the mine (height)
+for i = 1, H do
+    -- Loop through each row (width)
+    for j = 1, W do
+        -- Loop through each column (length)
+        for k = 2, L do
             turtle.forward()
         end
 
         print(RightOrLeft)
-        if (j < W) then
-            if (RightOrLeft == 0) then
+        
+        -- Handle turning and changing direction
+        if j < W then
+            if RightOrLeft == 0 then
                 RightOrLeft = 1
                 turtle.turnRight()
                 turtle.forward()
                 turtle.turnRight()
-                direciton = direciton - 1
-
+                direction = direction - 1
             else
                 RightOrLeft = 0
                 turtle.turnLeft()
                 turtle.forward()
                 turtle.turnLeft()
-                direciton = direciton + 1
+                direction = direction + 1
             end
         end
     end
-    if(i < H) then
+    
+    -- Move up a layer
+    if i < H then
         turtle.up()
         height = height + 1
     end
+    
+    -- Turn around after completing a layer
     turtle.turnRight()
     turtle.turnRight()
 end
 
-for i = 1,height - 1,1
-do
+-- Move back to the initial level
+for i = 1, height - 1 do
     turtle.down()
 end
+
 --[[
 if not (direciton == 1.5 or direciton == -.5) then
     for i = 1,(abs(direction % .5)),1
