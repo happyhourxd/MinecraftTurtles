@@ -139,30 +139,35 @@ if hasGps then
             turtle.forward()
         end
     end
-end
-
--- from here down is homing
-
+else
 -- Move back to the initial level
 for i = 1, height do
     turtle.down()
 end
 
-if not ((W % 2) == 0) then
+-- Turn around 180 degrees
+turtle.turnRight()
+turtle.turnRight()
+
+-- If the initial width is odd and the turtle is not at the width of the length
+if not ((W % 2) == 0) and not (j == W) then
     for j = 1, W - 1 do
         turtle.forward()
     end
     turtle.turnRight()
 end
 
+-- Move back along the mine's length
 for k = 1, L - 1 do
     turtle.forward()
 end
 
--- Here you need to complete your logic based on 'direction'
-if direction == 1.5 or direction == -0.5 then
-    for i = 1,(direction % .5),1
-    do
-        turtle.turnLeft()
+-- If the direction is 0.5 or -1.5, turn right
+if direction == 0.5 or direction == -1.5 then
+    for i = 1, math.abs(direction % 0.5) do
+        turtle.turnRight()
     end
+end
+
+
 end
