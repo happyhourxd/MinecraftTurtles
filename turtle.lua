@@ -36,6 +36,7 @@ for i = 1, H do
     for j = 1, W do
         -- Loop through each column (length)
         for k = 2, L do
+            turtle.dig()
             turtle.forward()
         end        
         -- Handle turning and changing direction
@@ -43,12 +44,14 @@ for i = 1, H do
             if RightOrLeft == 0 then
                 RightOrLeft = 1
                 turtle.turnRight()
+                turtle.dig()
                 turtle.forward()
                 turtle.turnRight()
                 direction = direction - 1
             else
                 RightOrLeft = 0
                 turtle.turnLeft()
+                turtle.dig()
                 turtle.forward()
                 turtle.turnLeft()
                 direction = direction + 1
@@ -58,6 +61,7 @@ for i = 1, H do
     
     -- Move up a layer
     if i < H then
+        turtle.digup()
         turtle.up()
         height = height + 1
     end
@@ -125,7 +129,7 @@ else
         for j = 1, W - 1 do
             turtle.forward()
         end
-        turtle.turnRight()
+        turtle.turnLeft()
         direction = direction - .5
     end
 
@@ -136,6 +140,7 @@ else
         for i = 1, math.abs(direction % 0.5) do
             turtle.turnRight()
         end
+    end
     
         
         -- Move back along the mine's length
