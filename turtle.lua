@@ -36,7 +36,7 @@ do
             turtle.forward()
         end
 
-        print(type(j), " ", type(W))
+        print(RightOrLeft)
         if (j < W) then
             if (RightOrLeft == 0) then
                 RightOrLeft = 1
@@ -58,18 +58,9 @@ do
         turtle.up()
         height = height + 1
     end
-    if (RightOrLeft == 0) then
-        RightOrLeft = 1
-        turtle.turnRight()
-        turtle.turnRight()
-    else
-        RightOrLeft = 0
-        turtle.turnRight()
-        turtle.turnRight()
-    end
+    turtle.turnRight()
+    turtle.turnRight()
 end
-
-print(direciton)
 
 for i = 1,height - 1,1
 do
