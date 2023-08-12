@@ -58,6 +58,17 @@ do
         turtle.up()
         height = height + 1
     end
+    if (RightOrLeft == 0) then
+        RightOrLeft = 1
+    else
+        RightOrLeft = 0
+    end
+    if not (direciton == 1.5 or direciton == -.5) then
+        for i = 1,(abs(direction % .5)),1
+        do
+            turtle.turnRight()
+        end
+    end
 end
 
 print(direciton)
@@ -66,7 +77,7 @@ for i = 1,height - 1,1
 do
     turtle.down()
 end
-
+--[[
 if not (direciton == 1.5 or direciton == -.5) then
     for i = 1,(abs(direction % .5)),1
     do
@@ -83,3 +94,4 @@ for k = i, L, 1
 do
     turtle.forward()
 end
+]]--
