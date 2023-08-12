@@ -37,10 +37,7 @@ for i = 1, H do
         -- Loop through each column (length)
         for k = 2, L do
             turtle.forward()
-        end
-
-        print(RightOrLeft)
-        
+        end        
         -- Handle turning and changing direction
         if j < W then
             if RightOrLeft == 0 then
@@ -68,6 +65,7 @@ for i = 1, H do
     -- Turn around after completing a layer
     turtle.turnRight()
     turtle.turnRight()
+    direction = direction + 1
 end
 
 
