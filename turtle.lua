@@ -20,9 +20,11 @@ H = tonumber(read())
 
 -- Calculate needed fuel
 NeededFuel = (L * W * H) + L + W + H
+print(turtle.getFuelLevel())
 if not (NeededFuel >= turtle.getFuelLevel()) then
     print("Enter ", (NeededFuel - turtle.getFuelLevel()) / 10, "coal")
     read()
+    turtle.refule(1)
 end
 
 -- Initialize direction variables
@@ -31,7 +33,7 @@ direction = 0.5 -- in pi radians
 
 -- Convert dimensions to numbers
 
-
+turtle.forward()
 -- Loop through each layer of the mine (height)
 for i = 1, H do
     -- Loop through each row (width)
@@ -63,7 +65,7 @@ for i = 1, H do
     
     -- Move up a layer
     if i < H then
-        turtle.digup()
+        turtle.digUp()
         turtle.up()
         height = height + 1
     end
@@ -149,4 +151,5 @@ else
     for k = 1, L - 1 do
         turtle.forward()
     end
+turtle.back()
 end
