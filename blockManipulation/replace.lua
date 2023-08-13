@@ -20,7 +20,7 @@ end
 --calculate needed blocks
 amountOfBlocksNeeded = (L * W * H)
 amtOfBlocks = 0
-while (amountOfBlocksNeeded > amtOfBlocks)
+while (amountOfBlocksNeeded > amtOfBlocks) do
     for i = 1, 16, 1 do
         amtOfBlocks = amtOfBlocks + turtle.getItemCount(i)
     end
@@ -35,7 +35,6 @@ RightOrLeft = 1
 direction = 0.5 -- in pi radians
 
 
-turtle.up()
 a = 1
 -- Loop through each layer of the mine (height)
 for i = 1, H do
@@ -58,12 +57,14 @@ for i = 1, H do
                 RightOrLeft = 1
                 turtle.turnRight()
                 turtle.forward()
+                turtle.placeDown()
                 turtle.turnRight()
                 direction = direction - 1
             else
                 RightOrLeft = 0
                 turtle.turnLeft()
                 turtle.forward()
+                turtle.placeDown()
                 turtle.turnLeft()
                 direction = direction + 1
             end
@@ -73,6 +74,7 @@ for i = 1, H do
     -- Move up a layer
     if i < H then
         turtle.up()
+        turtle.placeDown()
         height = height + 1
     end
     
@@ -81,4 +83,3 @@ for i = 1, H do
     turtle.turnRight()
     direction = direction + 1
 end
-turtle.down()

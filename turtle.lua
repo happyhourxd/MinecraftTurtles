@@ -36,6 +36,11 @@ else
     -- Continue after "mine.lua" has finished executing
     shell.run("blockManipulation/returnWOGPS.lua")  -- Execute "return.lua"
     -- Continue after "return.lua" has finished executing
+    turtle.up()
+    print("please echange blocks")
+    read()
     shell.run("blockManipulation/replace.lua")  -- Execute "replace.lua"
+    turtle.down()
+    shell.run("blockManipulation/returnWOGPS")
 end
     
