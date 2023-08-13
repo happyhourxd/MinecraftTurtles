@@ -55,15 +55,15 @@ for i = 1, H do
         if j < W then
             if RightOrLeft == 0 then
                 RightOrLeft = 1
+                turtle.placeDown()
                 turtle.turnRight()
                 turtle.forward()
-                turtle.placeDown()
                 turtle.turnRight()
                 direction = direction - 1
             else
                 RightOrLeft = 0
-                turtle.turnLeft()
                 turtle.forward()
+                turtle.turnLeft()
                 turtle.placeDown()
                 turtle.turnLeft()
                 direction = direction + 1

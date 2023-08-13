@@ -40,7 +40,6 @@ else
     print("please echange blocks")
     read()
     shell.run("blockManipulation/replace.lua")  -- Execute "replace.lua"
-    turtle.down()
     shell.run("blockManipulation/returnWOGPS")
 end
     
