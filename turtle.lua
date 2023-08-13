@@ -19,9 +19,9 @@ if task == "mine" then
     H = tonumber(read())
 
     _G.arg = {L, W, H}
-    os.execute("lua blockManipulation/mine.lua")  -- Execute "mine.lua"
+    shell.run("blockManipulation/mine.lua")  -- Execute "mine.lua"
     -- Continue after "mine.lua" has finished executing
-    os.execute("lua blockManipulation/returnWOGPS.lua")  -- Execute "return.lua"
+    shell.run("blockManipulation/returnWOGPS.lua")  -- Execute "return.lua"
 else
     print("What size should I replace?")
     print("Enter length:")
@@ -32,11 +32,10 @@ else
     H = tonumber(read())
 
     _G.arg = {L, W, H}
-    os.execute("lua blockManipulation/mine.lua")  -- Execute "mine.lua"
+    shell.run("blockManipulation/mine.lua")  -- Execute "mine.lua"
     -- Continue after "mine.lua" has finished executing
-    os.execute("lua blockManipulation/returnWOGPS.lua")  -- Execute "return.lua"
+    shell.run("blockManipulation/returnWOGPS.lua")  -- Execute "return.lua"
     -- Continue after "return.lua" has finished executing
-    turtle.up()
-    os.execute("lua blockManipulation/replace.lua")  -- Execute "replace.lua"
+    shell.run("blockManipulation/replace.lua")  -- Execute "replace.lua"
 end
     
