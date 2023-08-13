@@ -4,23 +4,33 @@ H = _G.arg[3]
 
 
 -- Move back to the initial level
-for i = 1, height do
+for i = 1, H - 1, 1 do
     turtle.down()
 end
 
-if not (((W % 2) == 0) && ((H % 2) == 0)) then
-    for i = 1, L, do
+if not (((W % 2) == 0) and ((H % 2) == 0)) then
+    for i = 1, L - 1,1 
+    do
         turtle.forward()
     end
     turtle.turnLeft()
-    for i = 1, W do
+    for i = 1, W - 1,1 
+    do
         turtle.forward()
     end
     turtle.turnLeft()
-elseif ((W % 2) == 0) then
+elseif (((W % 2) == 0) and (not(H % 2) == 0)) then
     turtle.turnLeft()
-    for i = 1, L, do
-        turtle.forwrad()
+    for i = 1, L - 1, do
+        turtle.forward()
     end
     turtle.turnLeft()
+elseif (((H % 2) == 0) and (not(W % 2) ==0)) then
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.turnRight()
 end
+
+
