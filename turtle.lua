@@ -31,6 +31,7 @@ else
     print("Enter height:")
     H = tonumber(read())
 
+
     _G.arg = {L, W, H}
     turtle.digDown()
     turtle.down()
@@ -42,6 +43,7 @@ else
     print("please echange blocks")
     read()
     shell.run("blockManipulation/replace.lua")  -- Execute "replace.lua"
+    turtle.up()
     shell.run("blockManipulation/returnWOGPS")
 end
     

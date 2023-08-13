@@ -20,13 +20,7 @@ H = tonumber(H)
 
 
 -- Calculate needed fuel
-NeededFuel = (L * W * H) + L + W + H
-print(turtle.getFuelLevel())
-while (NeededFuel > turtle.getFuelLevel()) do
-    print("Enter ", (NeededFuel - turtle.getFuelLevel()) / 10, "coal")
-    read()
-    turtle.refule(1)
-end
+
 
 -- Initialize direction variables
 RightOrLeft = 1

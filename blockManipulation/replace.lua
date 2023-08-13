@@ -62,9 +62,9 @@ for i = 1, H do
                 direction = direction - 1
             else
                 RightOrLeft = 0
-                turtle.forward()
-                turtle.turnLeft()
                 turtle.placeDown()
+                turtle.turnLeft()
+                turtle.forward()
                 turtle.turnLeft()
                 direction = direction + 1
             end
