@@ -21,7 +21,7 @@ H = tonumber(read())
 -- Calculate needed fuel
 NeededFuel = (L * W * H) + L + W + H
 print(turtle.getFuelLevel())
-if (NeededFuel > turtle.getFuelLevel()) then
+while (NeededFuel > turtle.getFuelLevel()) do
     print("Enter ", (NeededFuel - turtle.getFuelLevel()) / 10, "coal")
     read()
     turtle.refule(1)
