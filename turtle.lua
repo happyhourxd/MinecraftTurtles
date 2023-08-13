@@ -32,6 +32,8 @@ else
     H = tonumber(read())
 
     _G.arg = {L, W, H}
+    turtle.digDown()
+    turtle.down()
     shell.run("blockManipulation/mine.lua")  -- Execute "mine.lua"
     -- Continue after "mine.lua" has finished executing
     shell.run("blockManipulation/returnWOGPS.lua")  -- Execute "return.lua"
