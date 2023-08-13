@@ -14,6 +14,10 @@ L = _G.arg[1]
 W = _G.arg[2]
 H = _G.arg[3]
 
+L = tonumber(L)
+W = tonumber(W)
+H = tonumber(H)
+
 
 -- Calculate needed fuel
 NeededFuel = (L * W * H) + L + W + H

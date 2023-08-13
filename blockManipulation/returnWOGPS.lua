@@ -8,22 +8,19 @@ for i = 1, height do
     turtle.down()
 end
 
--- If the initial width is odd and the turtle is not at the width of the length
-if not ((W % 2) == 0) and not (j == W) then
-    for j = 1, W - 1 do
+if not (((W % 2) == 0) && ((H % 2) == 0)) then
+    for i = 1, L, do
         turtle.forward()
     end
     turtle.turnLeft()
-    direction = direction - .5
-end
-
--- If the direction is 0.5 or -1.5, turn right
-if direction == 0.5 or direction == -1.5 then
-    for i = 1, math.abs(direction % 0.5) do
-        turtle.turnRight()
+    for i = 1, W do
+        turtle.forward()
     end
-end        
-    -- Move back along the mine's length
-for k = 1, L - 1 do
-    turtle.forward()
+    turtle.turnLeft()
+elseif ((W % 2) == 0) then
+    turtle.turnLeft()
+    for i = 1, L, do
+        turtle.forwrad()
+    end
+    turtle.turnLeft()
 end
