@@ -82,4 +82,5 @@ for i = 1, H do
     turtle.turnRight()
     turtle.turnRight()
     direction = direction + 1
+    turtle.placeDown()
 end

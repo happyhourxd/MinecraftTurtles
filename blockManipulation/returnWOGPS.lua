@@ -33,7 +33,7 @@ elseif (((H % 2) == 0) and (not ((W % 2) == 0))) then -- W  = 5, H = 2
     print("odd width even highth")
 else --done W = 4, H = 2
     print("even width even highth")
-    
+    turn
 end
 
 

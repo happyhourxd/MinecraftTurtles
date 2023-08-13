@@ -1,4 +1,4 @@
-print("What should the turtle do? 'replace' or 'mine'?")
+print("What should the turtle do? 'replace', 'mine', or 'replace floor'?")
 task = read()
 
 
@@ -22,6 +22,29 @@ if task == "mine" then
     shell.run("blockManipulation/mine.lua")  -- Execute "mine.lua"
     -- Continue after "mine.lua" has finished executing
     shell.run("blockManipulation/returnWOGPS.lua")  -- Execute "return.lua"
+elseif (task == "replace") then
+    print("What size should I replace?")
+    print("Enter length:")
+    L = tonumber(read())
+    print("Enter width:")
+    W = tonumber(read())
+    print("Enter height:")
+    H = tonumber(read())
+
+
+    _G.arg = {L, W, H + 1}
+    turtle.digDown()
+    turtle.down()
+    shell.run("blockManipulation/mine.lua")  -- Execute "mine.lua"
+    -- Continue after "mine.lua" has finished executing
+    shell.run("blockManipulation/returnWOGPS.lua")  -- Execute "return.lua"
+    -- Continue after "return.lua" has finished executing
+    turtle.up()
+    print("please echange blocks")
+    read()
+    shell.run("blockManipulation/replace.lua")  -- Execute "replace.lua"
+    turtle.up()
+    shell.run("blockManipulation/returnWOGPS")
 else
     print("What size should I replace?")
     print("Enter length:")
@@ -42,8 +65,7 @@ else
     turtle.up()
     print("please echange blocks")
     read()
+    _G.arg = {L,W,1}
     shell.run("blockManipulation/replace.lua")  -- Execute "replace.lua"
     turtle.up()
     shell.run("blockManipulation/returnWOGPS")
-end
-    
