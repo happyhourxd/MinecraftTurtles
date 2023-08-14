@@ -69,3 +69,4 @@ else
     shell.run("blockManipulation/replace.lua")  -- Execute "replace.lua"
     turtle.up()
     shell.run("blockManipulation/returnWOGPS")
+end
