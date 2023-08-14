@@ -31,6 +31,11 @@ elseif (((W % 2) == 0) and (not(H % 2) == 0)) then -- W = 4, H = 1
 elseif (((H % 2) == 0) and (not ((W % 2) == 0))) then -- W  = 5, H = 2
     --todo
     print("odd width even highth")
+    turtle.turnRight()
+    for i = 1, W - 1, 1 do
+        turtule.forward()
+    end
+    turtle.turnLeft()
 else --done W = 4, H = 2
     print("even width even highth")
     turn
